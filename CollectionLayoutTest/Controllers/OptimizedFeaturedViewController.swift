@@ -14,6 +14,7 @@ class OptimizedFeaturedViewController: UIViewController {
     private var generator = LoremIpsumGenerator()
     
     fileprivate var phrases:[String] = []
+    fileprivate var cellPhrases:[Int:[String]] = [:]
 
     fileprivate var cacheSize = 1000
     fileprivate var cellNib: UINib = UINib(nibName: "OptimizedCollectionViewCell", bundle: nil)
@@ -64,11 +65,16 @@ class OptimizedFeaturedViewController: UIViewController {
     
     fileprivate func setupCell(cell:OptimizedCollectionViewCell, at indexPath:IndexPath = IndexPath(row: 0, section: 0)) {
         
-        cell.widthConstraint.constant = 290
+        cell.widthConstraint.constant = collectionView.bounds.size.width
         cell.titleLabel.text = "Cell \(indexPath.item)"
     
-        let randomMultiplier = Int(arc4random_uniform(4)) + 1
-        cell.setupStackView(with: phrases.prefix(upTo: randomMultiplier).reversed())
+        var features = cellPhrases[indexPath.item]
+        if features == nil {
+            let randomMultiplier = Int(arc4random_uniform(5)) + 4
+            features = phrases.prefix(upTo: randomMultiplier).reversed()
+            cellPhrases.updateValue(features!, forKey: indexPath.item)
+        }
+        cell.setupStackView(with: features!)
     
         cell.emptyView.backgroundColor = UIColor.randomColor()
     }

@@ -22,11 +22,9 @@ class DebugLayout: UICollectionViewFlowLayout {
         cellSizeCache.updateValue(calculatedSize, forKey: indexPath.item)
         
         let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-        
-        let spacing:CGFloat = 10.0
-        
         let itemIndex = indexPath.item
         
+        let spacing:CGFloat = 10.0
         var y = spacing
         if itemIndex > 0 {
             let previousItemSize = cellSizeCache[itemIndex - 1]
@@ -37,7 +35,7 @@ class DebugLayout: UICollectionViewFlowLayout {
             y = previousItemAttributes.frame.origin.y + previousItemHeight + spacing
         }
         
-        let originPoint = CGPoint(x: spacing, y: y)
+        let originPoint = CGPoint(x: 0.0, y: y)
         let size = calculatedSize
         
         attribute.frame = CGRect(origin: originPoint, size: size)
@@ -46,13 +44,12 @@ class DebugLayout: UICollectionViewFlowLayout {
         
         cachedAttributes.append(attribute)
         
-        if itemIndex == 0 {
+        if itemIndex == 5 {
             invalidateLayout()
         }
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        print(items: rect)
         return cachedAttributes
     }
     

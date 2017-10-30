@@ -18,14 +18,13 @@ class OptimizedCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var labelContainer: UIView!
     var labels:[UILabel] = []
     
-    var expectedSize:CGSize?
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var emptyView: UIView!
     
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
+    @IBOutlet weak var frameLabel: UILabel!
     @IBOutlet weak var longTextLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -55,7 +54,7 @@ class OptimizedCollectionViewCell: UICollectionViewCell {
             label.removeFromSuperview()
         }
         labels.removeAll()
-        expectedSize = nil
+        setNeedsLayout()
     }
     
     func setupStackView(with strings:[String]) {
@@ -63,17 +62,19 @@ class OptimizedCollectionViewCell: UICollectionViewCell {
         for (index, string) in strings.enumerated() {
             
             let label = UILabel()
-            
+            label.text = "- ".appending(string.lowercased())
+            label.backgroundColor = UIColor.green
             label.numberOfLines = 0
-            label.preferredMaxLayoutWidth = widthConstraint!.constant
-        
+            label.preferredMaxLayoutWidth = widthConstraint.constant - 30
+            
+//            labelContainer.translatesAutoresizingMaskIntoConstraints = false
             label.translatesAutoresizingMaskIntoConstraints = false
             
             labels.append(label)
             labelContainer.addSubview(label)
             
             if index == 0 {
-                label.topAnchor.constraint(equalTo: labelContainer.topAnchor, constant: 10.0).isActive = true
+                labelContainer.topAnchor.constraint(equalTo:label.topAnchor, constant: 0.0).isActive = true
             } else {
                 label.topAnchor.constraint(equalTo: (labels[index-1]).bottomAnchor, constant: 10.0).isActive = true
             }
@@ -82,12 +83,11 @@ class OptimizedCollectionViewCell: UICollectionViewCell {
             label.trailingAnchor.constraint(equalTo: labelContainer.trailingAnchor).isActive = true
             
             if string == strings.last {
-               labelContainer.bottomAnchor.constraint(equalTo: label.bottomAnchor, constant: 30.0).isActive = true
+               label.bottomAnchor.constraint(equalTo:labelContainer.bottomAnchor, constant: 0.0).isActive = true
             }
-            
-            label.text = "- ".appending(string.lowercased())
         }
     }
+    
     @IBAction func actionButtonTap(_ sender: Any) {
         actionCallback?()
     }

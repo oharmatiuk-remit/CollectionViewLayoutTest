@@ -8,8 +8,8 @@
 
 import UIKit
 
-class FeaturedViewController: UIViewController, UICollectionViewDataSourcePrefetching {
-    fileprivate let reuseIdentifier = "FeaturedCollectionViewCell"
+class HeavyFeaturedViewController: UIViewController, UICollectionViewDataSourcePrefetching {
+    fileprivate let reuseIdentifier = "HeavyFeaturedCell"
     
     private var generator = LoremIpsumGenerator()
     
@@ -23,7 +23,7 @@ class FeaturedViewController: UIViewController, UICollectionViewDataSourcePrefet
             layout.estimatedItemSize = CGSize(width: 180, height: 100)
         }
         
-        let cellNibName = "FeaturedCollectionViewCell"
+        let cellNibName = "HeavyFeaturedCell"
         let nib = UINib(nibName: cellNibName, bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
         
@@ -42,13 +42,13 @@ class FeaturedViewController: UIViewController, UICollectionViewDataSourcePrefet
     }
 }
 
-extension FeaturedViewController: UICollectionViewDelegate {
+extension HeavyFeaturedViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         print(items:"\(#function) #\(indexPath.item)")
     }
 }
 
-extension FeaturedViewController: UICollectionViewDataSource {
+extension HeavyFeaturedViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1000
@@ -58,7 +58,7 @@ extension FeaturedViewController: UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         cell.tag = indexPath.item
-        guard let customCell = cell as? FeaturedCollectionViewCell else { return cell }
+        guard let customCell = cell as? HeavyFeaturedCell else { return cell }
         print(items: "\n\n\n\n")
         measure(label: "cell #\(indexPath.item) setup") {
             customCell.titleLabel.text = "Cell \(indexPath.item)"

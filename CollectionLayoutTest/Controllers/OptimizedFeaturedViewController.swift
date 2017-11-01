@@ -26,7 +26,7 @@ class OptimizedFeaturedViewController: UIViewController {
         
         collectionView.register(cellNib, forCellWithReuseIdentifier: reuseIdentifier)
         
-        if let layout = collectionView?.collectionViewLayout as? DebugLayout {
+        if let layout = collectionView?.collectionViewLayout as? OptimizedLayout {
             layout.estimatedItemSize = CGSize(width: 240, height: 100)
         }
         
@@ -48,7 +48,7 @@ class OptimizedFeaturedViewController: UIViewController {
             for index in 0..<weakSelf.cacheSize {
                 let indexPath = IndexPath(row: index, section: 0)
                 let size = weakSelf.calculateCellSize(for: indexPath)
-                guard let layout = weakSelf.collectionView.collectionViewLayout as? DebugLayout else { return }
+                guard let layout = weakSelf.collectionView.collectionViewLayout as? OptimizedLayout else { return }
                 DispatchQueue.main.async {
                     layout.cacheCalculatedSize(size, forItemAt: indexPath)
                 }

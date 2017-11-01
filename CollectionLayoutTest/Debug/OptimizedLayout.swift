@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DebugLayout: UICollectionViewFlowLayout {
+class OptimizedLayout: UICollectionViewFlowLayout {
     
     var cellSizeCache:[Int: CGSize] = [:]
     

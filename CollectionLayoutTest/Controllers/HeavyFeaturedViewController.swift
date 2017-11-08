@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HeavyFeaturedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
+class HeavyFeaturedViewController: UIViewController {
     fileprivate let reuseIdentifier = "HeavyFeaturedCell"
     
     private var generator = LoremIpsumGenerator()

@@ -145,7 +145,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="NNp-We-FIw" id="4qo-Il-OVs"/>
                                     <outlet property="delegate" destination="NNp-We-FIw" id="ILZ-R2-2t6"/>
-                                    <outlet property="prefetchDataSource" destination="NNp-We-FIw" id="93g-ZL-Jbc"/>
+                                    <outlet property="prefetchDataSource" destination="NNp-We-FIw" id="WFN-C0-LR8"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -160,7 +160,7 @@
                     <tabBarItem key="tabBarItem" title="No stack" image="icons8-3-100" id="854-rC-DzW"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="collectionView" destination="EcY-aS-cpU" id="mJ7-yj-jMk"/>
+                        <outlet property="collectionView" destination="EcY-aS-cpU" id="w63-FF-PPi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4A8-x3-UEp" userLabel="First Responder" sceneMemberID="firstResponder"/>

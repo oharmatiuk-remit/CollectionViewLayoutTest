@@ -42,12 +42,6 @@ public func measure(label:String, callbackToExecute:()->()) {
     print(items:"[FINISH] \(label) [\(diffString) ms]")
 }
 
-//class Reflector {
-//    init(object:Any) {
-//        let mirror = Mirror(reflecting: object)
-//    }
-//}
-
 class LoremIpsumGenerator: NSObject {
     
     func createPhrase(_ wordsNumber:Int)->String {

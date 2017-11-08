@@ -27,7 +27,7 @@ class OptimizedFeaturedViewController: UIViewController {
         collectionView.register(cellNib, forCellWithReuseIdentifier: reuseIdentifier)
         
         if let layout = collectionView?.collectionViewLayout as? OptimizedLayout {
-            layout.estimatedItemSize = CGSize(width: 240, height: 100)
+            layout.estimatedItemSize = CGSize(width: 240, height: 300)
         }
         
         pregeneratePhrases()
@@ -50,6 +50,7 @@ class OptimizedFeaturedViewController: UIViewController {
                 let size = weakSelf.calculateCellSize(for: indexPath)
                 guard let layout = weakSelf.collectionView.collectionViewLayout as? OptimizedLayout else { return }
                 DispatchQueue.main.async {
+                    //print("\(#function) = \(size)")
                     layout.cacheCalculatedSize(size, forItemAt: indexPath)
                 }
             }
@@ -59,18 +60,18 @@ class OptimizedFeaturedViewController: UIViewController {
     private func calculateCellSize(for indexPath:IndexPath)->CGSize {
         let nib = UINib(nibName: "OptimizedCollectionViewCell", bundle: nil)
         let templateCell = nib.instantiate(withOwner: self, options: nil).first as! OptimizedCollectionViewCell
-        setupCell(cell: templateCell)
+        setupCell(cell: templateCell, at: indexPath)
         return templateCell.mainContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
     }
     
-    fileprivate func setupCell(cell:OptimizedCollectionViewCell, at indexPath:IndexPath = IndexPath(row: 0, section: 0)) {
-        
+    fileprivate func setupCell(cell:OptimizedCollectionViewCell, at indexPath:IndexPath) {
+        //print("\(#function) for \(indexPath)")
         cell.widthConstraint.constant = collectionView.bounds.size.width
         cell.titleLabel.text = "Cell \(indexPath.item)"
     
         var features = cellPhrases[indexPath.item]
         if features == nil {
-            let randomMultiplier = Int(arc4random_uniform(5)) + 4
+            let randomMultiplier = Int(arc4random_uniform(10)) + 5
             features = phrases.prefix(upTo: randomMultiplier).reversed()
             cellPhrases.updateValue(features!, forKey: indexPath.item)
         }
@@ -82,14 +83,14 @@ class OptimizedFeaturedViewController: UIViewController {
 
 extension OptimizedFeaturedViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print(items:"\(#function) #\(indexPath.item)")
+        //print(items:"\(#function) #\(indexPath.item)")
     }
 }
 
 extension OptimizedFeaturedViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1000
+        return 10000
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

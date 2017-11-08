@@ -13,6 +13,8 @@ class DebugCollectionView: UICollectionView {
     private var lastContentOffset:CGFloat = 0.0
     
     override func layoutSubviews() {
+//        print(#function)
+        
         let currentDate = Date()
         
         let diff = (currentDate.timeIntervalSince1970 - lastLayoutDate.timeIntervalSince1970) * 1000

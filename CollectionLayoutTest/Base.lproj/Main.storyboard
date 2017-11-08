@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Auto Sizing Collection View Controller-->
+        <!--Automatic-->
         <scene sceneID="t2U-ko-cjD">
             <objects>
                 <collectionViewController id="C6Q-2C-TtV" customClass="AutoSizingCollectionViewController" customModule="CollectionLayoutTest" customModuleProvider="target" sceneMemberID="viewController">
@@ -84,7 +84,7 @@
                             <outlet property="delegate" destination="C6Q-2C-TtV" id="jEZ-ml-FaL"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="" image="icons8-1-100" id="5rP-Fa-WJx"/>
+                    <tabBarItem key="tabBarItem" title="Automatic" image="icons8-1-100" id="5rP-Fa-WJx"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EaI-Ix-JK2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -111,7 +111,7 @@
             </objects>
             <point key="canvasLocation" x="-287" y="537"/>
         </scene>
-        <!--Featured View Controller-->
+        <!--No stack-->
         <scene sceneID="2pq-lg-uJ3">
             <objects>
                 <viewController id="NNp-We-FIw" customClass="FeaturedViewController" customModule="CollectionLayoutTest" customModuleProvider="target" sceneMemberID="viewController">
@@ -145,7 +145,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="NNp-We-FIw" id="4qo-Il-OVs"/>
                                     <outlet property="delegate" destination="NNp-We-FIw" id="ILZ-R2-2t6"/>
-                                    <outlet property="prefetchDataSource" destination="NNp-We-FIw" id="rP6-h2-s8r"/>
+                                    <outlet property="prefetchDataSource" destination="NNp-We-FIw" id="93g-ZL-Jbc"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -157,7 +157,7 @@
                             <constraint firstAttribute="trailing" secondItem="EcY-aS-cpU" secondAttribute="trailing" id="mF8-XC-RJZ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="icons8-2-100" id="854-rC-DzW"/>
+                    <tabBarItem key="tabBarItem" title="No stack" image="icons8-3-100" id="854-rC-DzW"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="EcY-aS-cpU" id="mJ7-yj-jMk"/>
@@ -167,7 +167,7 @@
             </objects>
             <point key="canvasLocation" x="708" y="1312"/>
         </scene>
-        <!--Optimized Featured View Controller-->
+        <!--Optimized-->
         <scene sceneID="hvC-lZ-vHn">
             <objects>
                 <viewController id="tqs-5H-olH" customClass="OptimizedFeaturedViewController" customModule="CollectionLayoutTest" customModuleProvider="target" sceneMemberID="viewController">
@@ -212,7 +212,7 @@
                             <constraint firstItem="VCN-1Y-o3B" firstAttribute="top" secondItem="Aal-0T-Zyq" secondAttribute="bottom" id="iCw-5f-I4y"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="icons8-3-100" id="o6O-CX-s8C"/>
+                    <tabBarItem key="tabBarItem" title="Optimized" image="icons8-4" id="o6O-CX-s8C"/>
                     <connections>
                         <outlet property="collectionView" destination="Aal-0T-Zyq" id="42M-W4-ZtP"/>
                     </connections>
@@ -221,7 +221,7 @@
             </objects>
             <point key="canvasLocation" x="1383" y="1312"/>
         </scene>
-        <!--Item-->
+        <!--Heavy-->
         <scene sceneID="LV2-n6-89E">
             <objects>
                 <viewController id="ATn-wb-6Oe" customClass="HeavyFeaturedViewController" customModule="CollectionLayoutTest" customModuleProvider="target" sceneMemberID="viewController">
@@ -229,7 +229,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iag-hx-D06">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iag-hx-D06" customClass="DebugLayout" customModule="CollectionLayoutTest" customModuleProvider="target">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -250,7 +250,7 @@
                             <outlet property="delegate" destination="ATn-wb-6Oe" id="W6o-U1-P7j"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="Item" id="acc-9B-vzo"/>
+                    <tabBarItem key="tabBarItem" title="Heavy" image="icons8-2-100" id="acc-9B-vzo"/>
                     <connections>
                         <outlet property="collectionView" destination="HKm-8z-POP" id="VS9-ja-g9j"/>
                     </connections>
@@ -264,5 +264,6 @@
         <image name="icons8-1-100" width="50" height="50"/>
         <image name="icons8-2-100" width="50" height="50"/>
         <image name="icons8-3-100" width="50" height="50"/>
+        <image name="icons8-4" width="50" height="50"/>
     </resources>
 </document>

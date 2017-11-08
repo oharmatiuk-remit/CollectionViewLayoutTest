@@ -96,17 +96,12 @@ class FeaturedCollectionViewCell: UICollectionViewCell {
     }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        print(#function)
+        var frame = layoutAttributes.frame
+        frame.size = mainContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        layoutAttributes.frame = frame
         
-        let oldHeight = layoutAttributes.frame.height
-        
-        measure(label: "preferred layout for cell #\(self.tag)") {
-            var frame = layoutAttributes.frame
-            frame.size = mainContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-            layoutAttributes.frame = frame
-        }
-
-        print(items: "Cell #\(self.tag): \(oldHeight) -> \(layoutAttributes.frame.height)")
-
         return layoutAttributes
     }
+    
 }

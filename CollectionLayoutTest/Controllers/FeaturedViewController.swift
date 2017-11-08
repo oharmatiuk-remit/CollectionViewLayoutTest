@@ -8,7 +8,8 @@
 
 import UIKit
 
-class FeaturedViewController: UIViewController, UICollectionViewDataSourcePrefetching {
+class FeaturedViewController: UIViewController {
+    
     fileprivate let reuseIdentifier = "FeaturedCollectionViewCell"
     
     private var generator = LoremIpsumGenerator()
@@ -19,8 +20,9 @@ class FeaturedViewController: UIViewController, UICollectionViewDataSourcePrefet
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.estimatedItemSize = CGSize(width: 180, height: 100)
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.estimatedItemSize = CGSize(width: 240, height: 300)
+//            layout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
         }
         
         let cellNibName = "FeaturedCollectionViewCell"
@@ -31,8 +33,11 @@ class FeaturedViewController: UIViewController, UICollectionViewDataSourcePrefet
             let randomMultiplier = Int(arc4random_uniform(UInt32(index))) + 5
             phrases.append(generator.createPhrase((randomMultiplier)))
         }
+        collectionView.prefetchDataSource = self
     }
-    
+}
+
+extension FeaturedViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         print("Prefetching for \(indexPaths)")
     }
@@ -51,7 +56,7 @@ extension FeaturedViewController: UICollectionViewDelegate {
 extension FeaturedViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1000
+        return 10000
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

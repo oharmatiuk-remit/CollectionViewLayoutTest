@@ -25,6 +25,7 @@
 		C2D590771FA0B53700B7183B /* OptimizedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D590751FA0B53700B7183B /* OptimizedCollectionViewCell.xib */; };
 		C2DDE19E1F99F11E004B480C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2DDE19D1F99F11E004B480C /* Assets.xcassets */; };
 		C2DDE1A01F99F599004B480C /* OptimizedFeaturedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DDE19F1F99F599004B480C /* OptimizedFeaturedViewController.swift */; };
+		C2E5F2691FB19C4E00A41742 /* DebugLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E5F2681FB19C4E00A41742 /* DebugLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		C2D590751FA0B53700B7183B /* OptimizedCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptimizedCollectionViewCell.xib; sourceTree = "<group>"; };
 		C2DDE19D1F99F11E004B480C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C2DDE19F1F99F599004B480C /* OptimizedFeaturedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimizedFeaturedViewController.swift; sourceTree = "<group>"; };
+		C2E5F2681FB19C4E00A41742 /* DebugLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				C20959111F96306C00C813CC /* DebugCollectionView.swift */,
+				C2E5F2681FB19C4E00A41742 /* DebugLayout.swift */,
 				C20959131F96394600C813CC /* OptimizedLayout.swift */,
 			);
 			path = Debug;
@@ -228,6 +231,7 @@
 			files = (
 				C224E41E1F8FA43800A70234 /* AutoSizingCollectionViewCell.swift in Sources */,
 				C224E41C1F8FA3C500A70234 /* AutoSizingCollectionViewController.swift in Sources */,
+				C2E5F2691FB19C4E00A41742 /* DebugLayout.swift in Sources */,
 				C20959121F96306C00C813CC /* DebugCollectionView.swift in Sources */,
 				C203EC221FA9F71600E37950 /* HeavyFeaturedCell.swift in Sources */,
 				C20959141F96394600C813CC /* OptimizedLayout.swift in Sources */,

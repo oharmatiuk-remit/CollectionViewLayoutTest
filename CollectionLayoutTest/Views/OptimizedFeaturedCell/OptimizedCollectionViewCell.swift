@@ -41,6 +41,8 @@ class OptimizedCollectionViewCell: UICollectionViewCell {
         emptyView.layer.cornerRadius = cornerRadius
         actionButton.layer.cornerRadius = cornerRadius
         cancelButton.layer.cornerRadius = cornerRadius
+        
+        mainContainer.translatesAutoresizingMaskIntoConstraints = false
     }
     
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
@@ -49,12 +51,12 @@ class OptimizedCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        print(items:#function)
+        //print(items:#function)
         for label in labels {
             label.removeFromSuperview()
         }
         labels.removeAll()
-        setNeedsLayout()
+//        setNeedsLayout()
     }
     
     func setupStackView(with strings:[String]) {
@@ -63,11 +65,9 @@ class OptimizedCollectionViewCell: UICollectionViewCell {
             
             let label = UILabel()
             label.text = "- ".appending(string.lowercased())
-            label.backgroundColor = UIColor.green
             label.numberOfLines = 0
             label.preferredMaxLayoutWidth = widthConstraint.constant - 30
             
-//            labelContainer.translatesAutoresizingMaskIntoConstraints = false
             label.translatesAutoresizingMaskIntoConstraints = false
             
             labels.append(label)
@@ -93,6 +93,7 @@ class OptimizedCollectionViewCell: UICollectionViewCell {
     }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+//        //print(#function)
         return layoutAttributes
     }
 }

@@ -46,6 +46,7 @@ class HeavyFeaturedCell: UICollectionViewCell {
     }
     
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+        print(items:"\(#function):\(layoutAttributes.frame)")
         super.apply(layoutAttributes)
     }
     
@@ -60,7 +61,6 @@ class HeavyFeaturedCell: UICollectionViewCell {
     }
     
     func setupStackView(with strings:[String]) {
-        
         for (index, string) in strings.enumerated() {
             
             let label = UILabel()
@@ -73,22 +73,20 @@ class HeavyFeaturedCell: UICollectionViewCell {
             label.text = "- ".appending(string.lowercased())
         }
     }
+    
     @IBAction func actionButtonTap(_ sender: Any) {
         actionCallback?()
     }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        let oldFrame = layoutAttributes.frame
+        var frame = layoutAttributes.frame
+        let oldHeight = oldFrame.size.height
         
-        let oldHeight = layoutAttributes.frame.height
+        frame.size = mainContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        layoutAttributes.frame = frame
         
-        measure(label: "preferred layout for cell #\(self.tag)") {
-            var frame = layoutAttributes.frame
-            frame.size = mainContainer.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-            layoutAttributes.frame = frame
-        }
-
-        print(items: "Cell #\(self.tag): \(oldHeight) -> \(layoutAttributes.frame.height)")
-
+        print(items:"\(#function): \(oldHeight)->\(layoutAttributes.frame.size.height)")
         return layoutAttributes
     }
 }

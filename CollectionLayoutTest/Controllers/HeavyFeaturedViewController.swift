@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HeavyFeaturedViewController: UIViewController, UICollectionViewDataSourcePrefetching {
+class HeavyFeaturedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     fileprivate let reuseIdentifier = "HeavyFeaturedCell"
     
     private var generator = LoremIpsumGenerator()
@@ -19,8 +19,9 @@ class HeavyFeaturedViewController: UIViewController, UICollectionViewDataSourceP
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.estimatedItemSize = CGSize(width: 180, height: 100)
+        if let layout = collectionView?.collectionViewLayout as? DebugLayout {
+            layout.estimatedItemSize = CGSize(width: 240, height: 300)
+//            layout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
         }
         
         let cellNibName = "HeavyFeaturedCell"
@@ -32,45 +33,28 @@ class HeavyFeaturedViewController: UIViewController, UICollectionViewDataSourceP
             phrases.append(generator.createPhrase((randomMultiplier)))
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        print("Prefetching for \(indexPaths)")
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-        print("Cancel prefetching for \(indexPaths)")
-    }
-}
-
-extension HeavyFeaturedViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print(items:"\(#function) #\(indexPath.item)")
-    }
 }
 
 extension HeavyFeaturedViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1000
+        return 10000
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+        print("\n\n")
+        print(items:#function)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         cell.tag = indexPath.item
         guard let customCell = cell as? HeavyFeaturedCell else { return cell }
-        print(items: "\n\n\n\n")
-        measure(label: "cell #\(indexPath.item) setup") {
-            customCell.titleLabel.text = "Cell \(indexPath.item)"
-            customCell.emptyView.backgroundColor = UIColor.randomColor()
-            
-            let randomMultiplier = Int(arc4random_uniform(10)) + 5
-            customCell.setupStackView(with: phrases.prefix(upTo: randomMultiplier).reversed())
-            
-            measure(label: "cell size calculation") {
-                customCell.expectedSize = customCell.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-            }
-        }
+        
+        customCell.titleLabel.text = "Cell \(indexPath.item)"
+        customCell.emptyView.backgroundColor = UIColor.randomColor()
+        
+        let randomMultiplier = Int(arc4random_uniform(10)) + 5
+        customCell.setupStackView(with: phrases.prefix(upTo: randomMultiplier).reversed())
+        customCell.expectedSize = customCell.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        
         return cell
     }
 }

@@ -76,7 +76,7 @@
                                     <action selector="actionButtonTap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="mYu-VP-gc5"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="A7R-jp-2BL">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="A7R-jp-2BL">
                                 <rect key="frame" x="11" y="197" width="296" height="147"/>
                             </stackView>
                         </subviews>

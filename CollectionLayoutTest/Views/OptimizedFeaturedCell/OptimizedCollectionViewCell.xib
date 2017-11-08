@@ -72,7 +72,7 @@
                             </button>
                             <view autoresizesSubviews="NO" contentMode="scaleToFill" verticalHuggingPriority="240" verticalCompressionResistancePriority="751" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xr0-lO-EmD">
                                 <rect key="frame" x="0.0" y="186" width="318" height="36"/>
-                                <color key="backgroundColor" red="0.681640625" green="0.88579799110000002" blue="1" alpha="0.60999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>

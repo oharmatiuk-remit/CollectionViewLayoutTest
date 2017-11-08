@@ -40,8 +40,6 @@ class OptimizedLayout: UICollectionViewFlowLayout {
         
         attribute.frame = CGRect(origin: originPoint, size: size)
         
-        print("Attributes #\(attribute.indexPath.item)\(attribute.frame)")
-        
         cachedAttributes.append(attribute)
         
         if itemIndex == 5 {
@@ -54,6 +52,7 @@ class OptimizedLayout: UICollectionViewFlowLayout {
     }
     
     override func prepare() {
+        //print(#function)
         super.prepare()
     }
     
@@ -67,14 +66,17 @@ class OptimizedLayout: UICollectionViewFlowLayout {
     }
     
     override func invalidateLayout() {
+        //print(#function)
         super.invalidateLayout()
     }
     
     override func invalidateLayout(with context: UICollectionViewLayoutInvalidationContext) {
+        //print(#function)
         super.invalidateLayout(with: context)
     }
     
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        //print(#function)
         return super.shouldInvalidateLayout(forBoundsChange: newBounds)
     }
 }

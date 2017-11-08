@@ -36,22 +36,6 @@ class FeaturedViewController: UIViewController {
     }
 }
 
-extension FeaturedViewController: UICollectionViewDataSourcePrefetching {
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        print("Prefetching for \(indexPaths)")
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-        print("Cancel prefetching for \(indexPaths)")
-    }
-}
-
-extension FeaturedViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print(items:"\(#function) #\(indexPath.item)")
-    }
-}
-
 extension FeaturedViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

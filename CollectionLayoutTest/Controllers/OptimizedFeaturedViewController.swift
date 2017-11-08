@@ -50,7 +50,6 @@ class OptimizedFeaturedViewController: UIViewController {
                 let size = weakSelf.calculateCellSize(for: indexPath)
                 guard let layout = weakSelf.collectionView.collectionViewLayout as? OptimizedLayout else { return }
                 DispatchQueue.main.async {
-                    //print("\(#function) = \(size)")
                     layout.cacheCalculatedSize(size, forItemAt: indexPath)
                 }
             }
@@ -81,12 +80,6 @@ class OptimizedFeaturedViewController: UIViewController {
     }
 }
 
-extension OptimizedFeaturedViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        //print(items:"\(#function) #\(indexPath.item)")
-    }
-}
-
 extension OptimizedFeaturedViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -103,5 +96,3 @@ extension OptimizedFeaturedViewController: UICollectionViewDataSource {
         return cell
     }
 }
-
-

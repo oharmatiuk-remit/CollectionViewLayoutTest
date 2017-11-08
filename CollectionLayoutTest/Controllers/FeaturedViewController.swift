@@ -33,7 +33,6 @@ class FeaturedViewController: UIViewController {
             let randomMultiplier = Int(arc4random_uniform(UInt32(index))) + 5
             phrases.append(generator.createPhrase((randomMultiplier)))
         }
-        collectionView.prefetchDataSource = self
     }
 }
 
